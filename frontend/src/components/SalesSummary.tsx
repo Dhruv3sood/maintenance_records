@@ -459,7 +459,7 @@ function SalesSummary() {
                       fill="#8884d8"
                       dataKey="revenue"
                     >
-                      {leadSourceData.map((entry, index) => (
+                      {leadSourceData.map((_entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>

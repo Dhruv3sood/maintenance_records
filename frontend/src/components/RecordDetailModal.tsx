@@ -9,10 +9,10 @@ interface RecordDetailModalProps {
   onClose: () => void
   onEdit: (id: number) => void
   onDelete: (id: number) => void
-  onViewRecord?: (record: Record) => void  // eslint-disable-line @typescript-eslint/no-unused-vars
+  onViewRecord?: (record: Record) => void
 }
 
-function RecordDetailModal({ record, isOpen, onClose, onEdit, onDelete, onViewRecord }: RecordDetailModalProps) {
+function RecordDetailModal({ record, isOpen, onClose, onEdit, onDelete }: RecordDetailModalProps) {
   const [relatedRecords, setRelatedRecords] = useState<Record[]>([])
   const [loading, setLoading] = useState(false)
   const [currentRecord, setCurrentRecord] = useState<Record>(record)
