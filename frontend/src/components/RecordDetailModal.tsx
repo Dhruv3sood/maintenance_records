@@ -9,7 +9,6 @@ interface RecordDetailModalProps {
   onClose: () => void
   onEdit: (id: number) => void
   onDelete: (id: number) => void
-  onViewRecord?: (record: Record) => void
 }
 
 function RecordDetailModal({ record, isOpen, onClose, onEdit, onDelete }: RecordDetailModalProps) {
