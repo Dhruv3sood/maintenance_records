@@ -46,6 +46,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('role', role)
       api.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
     } catch (error: any) {
+      if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
+        throw new Error('Request timed out. The backend may be waking up (this can take 30-60 seconds on the free tier). Please try again.')
+      }
+      if (error.message?.includes('Network Error') || !error.response) {
+        throw new Error('Cannot reach the backend server. Please check if the backend is running and VITE_API_URL is set correctly.')
+      }
       throw new Error(error.response?.data?.detail || 'Invalid passcode')
     }
   }
